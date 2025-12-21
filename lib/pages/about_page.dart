@@ -7,26 +7,70 @@ class AboutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 80,
         title: const Text(
           "Список дел",
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
         ),
-        backgroundColor: const Color.fromARGB(255, 163, 133, 214),
-        foregroundColor: Colors.white,
-        centerTitle: true,
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.perm_identity_rounded, size: 52),
-            Text("Создал ученик 10А класса", style: TextStyle(fontSize: 24)),
-            Text(
-              "Жигжитов Ким",
-              style: TextStyle(fontSize: 35, fontWeight: FontWeight.w500),
-            ),
-          ],
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
+          width: 340,
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.primary,
+            borderRadius: BorderRadius.circular(24),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: 0.15),
+                blurRadius: 20,
+                offset: const Offset(0, 10),
+              ),
+            ],
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                padding: const EdgeInsets.all(18),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Theme.of(context).colorScheme.surface,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Theme.of(context).colorScheme.surface,
+                      blurRadius: 18,
+                      offset: const Offset(0, 6),
+                    ),
+                  ],
+                ),
+                child: Icon(
+                  Icons.perm_identity_rounded,
+                  size: 52,
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
+              ),
+
+              const SizedBox(height: 24),
+              Text(
+                "Проектная работа выполнена учеником 10А класса",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 24,
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
+              ),
+              Text(
+                "Жигжитов Ким",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 35,
+                  fontWeight: FontWeight.w500,
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

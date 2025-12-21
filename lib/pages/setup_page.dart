@@ -30,50 +30,78 @@ class _SetupPageState extends State<SetupPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-
-      appBar: AppBar(
-        toolbarHeight: 80,
-        title: const Text(
-          "Список дел",
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
-        ),
-        backgroundColor: const Color.fromARGB(255, 163, 133, 214),
-        foregroundColor: Colors.white,
-        centerTitle: true,
-      ),
+      backgroundColor: Theme.of(context).colorScheme.surface,
 
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "Добро пожаловать!",
-              style: TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.w700,
-                // shadows: [
-                //   Shadow(
-                //     offset: Offset(2, 2),
-                //     blurRadius: 2,
-                //     color: Colors.black,
-                //   ),
-                // ],
+        child: Container(
+          padding: const EdgeInsets.all(24),
+          width: 360,
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.primary,
+            borderRadius: BorderRadius.circular(24),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: 0.2),
+                blurRadius: 15,
+                offset: const Offset(0, 8),
               ),
-            ),
-            SizedBox(height: 20),
-            FloatingActionButton.extended(
-              onPressed: finishSetup,
-              label: Row(
+            ],
+          ),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text("Продолжить"),
-                  SizedBox(width: 8),
-                  Icon(Icons.arrow_circle_right_outlined),
+                  Icon(
+                    Icons.list_alt,
+                    size: 36,
+                    color: Theme.of(context).colorScheme.secondary,
+                  ),
+                  const SizedBox(width: 12),
+                  Text(
+                    "Список дел",
+                    style: TextStyle(
+                      fontSize: 38,
+                      fontWeight: FontWeight.w600,
+                      color: Theme.of(context).colorScheme.secondary,
+                    ),
+                  ),
                 ],
               ),
-            ),
-          ],
+
+              const SizedBox(height: 30),
+
+              Text(
+                "Добро пожаловать!",
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.w700,
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
+              ),
+
+              const SizedBox(height: 16),
+
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton.icon(
+                  onPressed: finishSetup,
+                  icon: const Icon(Icons.arrow_circle_right_outlined),
+                  label: const Text("Продолжить"),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Theme.of(context).colorScheme.surface,
+                    foregroundColor: Theme.of(context).colorScheme.secondary,
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -34,7 +34,7 @@ class TodoList extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(15),
           decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 185, 149, 234),
+            color: Theme.of(context).colorScheme.primary,
             borderRadius: BorderRadius.circular(15),
           ),
           child: Row(
@@ -42,21 +42,23 @@ class TodoList extends StatelessWidget {
               Checkbox(
                 value: taskCompleted,
                 onChanged: onChanged,
-                checkColor: Colors.black,
-                activeColor: Colors.white,
-                side: const BorderSide(color: Colors.white),
+                checkColor: Theme.of(context).colorScheme.secondary,
+                activeColor: Theme.of(context).colorScheme.primary,
+                side: BorderSide(
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
                 shape: CircleBorder(),
               ),
               Text(
                 taskName,
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Theme.of(context).colorScheme.secondary,
                   fontSize: 18,
                   fontWeight: FontWeight.w500,
                   decoration: taskCompleted
                       ? TextDecoration.lineThrough
                       : TextDecoration.none,
-                  decorationColor: Colors.white,
+                  decorationColor: Theme.of(context).colorScheme.secondary,
                   decorationThickness: 2,
                 ),
               ),
